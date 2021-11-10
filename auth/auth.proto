@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package auth;
+
+import "models/models.proto";
+
+service Auth {
+  rpc Login(LoginDTO) returns (LoginResponse);
+  rpc Register(RegistrationDTO) returns (RegistrationResponse);
+  rpc VerifyEmailAddress(EmailVerificationDTO) returns (EmailVerificationResponse);
+}
+
+message LoginDTO {
+  string email = 1;
+  string password = 2;
+}
+
+message LoginResponse {
+  uint32 status = 1;
+  string token = 2;
+  bool mfa = 3;
+  repeated models.AccessibleInstitution institutions = 4;
+  repeated string errors = 5;
+}
+
+message RegistrationDTO {
+  string email = 1;
+  string password = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string phoneNumber = 5;
+}
+
+message RegistrationResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}
+
+message EmailVerificationDTO {
+  string code = 1;
+}
+
+message EmailVerificationResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}
