@@ -5,9 +5,9 @@ package auth;
 import "models/models.proto";
 
 service Auth {
-  rpc login(LoginDTO) returns (LoginResponse);
-  rpc register(RegistrationDTO) returns (RegistrationResponse);
-  rpc verifyEmailAddress(EmailVerificationDTO) returns (EmailVerificationResponse);
+  rpc Login(LoginDTO) returns (LoginResponse);
+  rpc Register(RegistrationDTO) returns (RegistrationResponse);
+  rpc VerifyEmailAddress(EmailVerificationDTO) returns (EmailVerificationResponse);
 }
 
 message LoginDTO {
