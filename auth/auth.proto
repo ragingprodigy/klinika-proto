@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package auth;
 
-import "models/models.proto";
-
 service Auth {
   rpc Login(LoginDTO) returns (LoginResponse);
   rpc Register(RegistrationDTO) returns (RegistrationResponse);
@@ -16,14 +14,8 @@ message LoginDTO {
 }
 
 message LoginResponse {
-  message Data {
-    string token = 1;
-    bool mfa = 2;
-    repeated models.AccessibleInstitution institutions = 3;
-  }
-
   uint32 status = 1;
-  Data data = 2;
+  string token = 2;
   repeated string errors = 3;
 }
 
