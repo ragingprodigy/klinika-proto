@@ -4,6 +4,7 @@ package auth;
 
 service Auth {
   rpc Login(LoginDTO) returns (LoginResponse);
+  rpc CheckToken(TokenDTO) returns (TokenResponse);
   rpc Register(RegistrationDTO) returns (RegistrationResponse);
   rpc VerifyEmailAddress(EmailVerificationDTO) returns (EmailVerificationResponse);
 }
@@ -16,6 +17,21 @@ message LoginDTO {
 message LoginResponse {
   uint32 status = 1;
   string token = 2;
+  repeated string errors = 3;
+}
+
+message TokenDTO {
+  string token = 1;
+}
+
+message TokenResponse {
+  message Data {
+    int32 exp = 1;
+    int32 iat = 2;
+    string sub = 3;
+  }
+  uint32 status = 1;
+  Data data = 2;
   repeated string errors = 3;
 }
 
