@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package user;
+
+import "models/models.proto";
+
+service User {
+  rpc GetProfile(models.TokenDTO) returns (ProfileResponse);
+}
+
+message ProfileResponse {
+  uint32 status = 1;
+  models.User data = 2;
+  repeated string errors = 3;
+}
