@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package klinika;
+
+import "models/models.proto";
+import "user/user.proto";
+import "auth/auth.proto";
+
+service Klinika {
+  rpc Login(auth.LoginDTO) returns (auth.LoginResponse);
+  rpc CheckToken(models.TokenDTO) returns (auth.TokenResponse);
+  rpc Register(auth.RegistrationDTO) returns (auth.LoginResponse);
+  rpc VerifyEmailAddress(auth.VerificationDTO) returns (auth.VerificationResponse);
+  rpc VerifyPhoneNumber(auth.VerificationDTO) returns (auth.VerificationResponse);
+  rpc GetProfile(models.TokenDTO) returns (user.ProfileResponse);
+}

@@ -2,16 +2,6 @@ syntax = "proto3";
 
 package auth;
 
-import "models/models.proto";
-
-service Auth {
-  rpc Login(LoginDTO) returns (LoginResponse);
-  rpc CheckToken(models.TokenDTO) returns (TokenResponse);
-  rpc Register(RegistrationDTO) returns (LoginResponse);
-  rpc VerifyEmailAddress(VerificationDTO) returns (VerificationResponse);
-  rpc VerifyPhoneNumber(VerificationDTO) returns (VerificationResponse);
-}
-
 message LoginDTO {
   string email = 1;
   string password = 2;
