@@ -5,8 +5,9 @@ package auth;
 service Auth {
   rpc Login(LoginDTO) returns (LoginResponse);
   rpc CheckToken(TokenDTO) returns (TokenResponse);
-  rpc Register(RegistrationDTO) returns (RegistrationResponse);
-  rpc VerifyEmailAddress(EmailVerificationDTO) returns (EmailVerificationResponse);
+  rpc Register(RegistrationDTO) returns (LoginResponse);
+  rpc VerifyEmailAddress(VerificationDTO) returns (VerificationResponse);
+  rpc VerifyPhoneNumber(VerificationDTO) returns (VerificationResponse);
 }
 
 message LoginDTO {
@@ -15,8 +16,11 @@ message LoginDTO {
 }
 
 message LoginResponse {
+  message Data {
+    string token = 1;
+  }
   uint32 status = 1;
-  string token = 2;
+  Data data = 2;
   repeated string errors = 3;
 }
 
@@ -29,6 +33,8 @@ message TokenResponse {
     int32 exp = 1;
     int32 iat = 2;
     string sub = 3;
+    bool emailVerified = 4;
+    bool phoneVerified = 5;
   }
   uint32 status = 1;
   Data data = 2;
@@ -43,16 +49,12 @@ message RegistrationDTO {
   string phoneNumber = 5;
 }
 
-message RegistrationResponse {
-  uint32 status = 1;
-  repeated string errors = 2;
+message VerificationDTO {
+  string token = 1;
+  string code = 2;
 }
 
-message EmailVerificationDTO {
-  string code = 1;
-}
-
-message EmailVerificationResponse {
+message VerificationResponse {
   uint32 status = 1;
   repeated string errors = 2;
 }
