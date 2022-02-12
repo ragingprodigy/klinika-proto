@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+package family;
+
+import "models/models.proto";
+
+message FamilyBasic {
+  string id = 1;
+  string name = 2;
+  string cardNumber = 3;
+  string address = 4;
+  string phoneNumber = 5;
+}
+
+message Family {
+  string id = 1;
+  string name = 2;
+  string cardNumber = 3;
+  string address = 4;
+  string phoneNumber = 5;
+  int32 createdAt = 6;
+  int32 updatedAt = 7;
+  models.BriefUser createdBy = 8;
+  models.BriefUser updatedBy = 9;
+}
+
+message CreateFamilyDTO {
+  string token = 1;
+  string name = 2;
+  string cardNumber = 3;
+  string address = 4;
+  string phoneNumber = 5;
+}
+
+message UpdateFamilyDTO {
+  string id = 1;
+  string name = 2;
+  string cardNumber = 3;
+  string address = 4;
+  string phoneNumber = 5;
+  string token = 6;
+}
+
+message DeleteFamilyDTO {
+  string id = 1;
+  string token = 2;
+}
+
+message ViewFamilyDTO {
+  string id = 1;
+  string token = 2;
+}
+
+message ListFamiliesDTO {
+  string token = 1;
+  string createdBy = 2;
+  string updatedBy = 3;
+  string name = 4;
+  string address = 5;
+  string cardNumber = 6;
+  string phone = 7;
+  uint32 page = 8;
+  uint32 perPage = 9;
+}
+
+message FamilyResponse {
+  uint32 status = 1;
+  Family data = 2;
+  repeated string errors = 3;
+}
+
+message FamiliesResponse {
+  uint32 status = 1;
+  repeated FamilyBasic data = 2;
+  models.Pagination pagination = 3;
+  repeated string errors = 4;
+}
+
+message DeleteFamilyResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}

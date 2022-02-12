@@ -1,0 +1,124 @@
+syntax = "proto3";
+
+package patient;
+
+import "models/models.proto";
+import "family/family.proto";
+
+message PatientBasic {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string cardNumber = 4;
+  uint32 dateOfBirth = 5;
+  string gender = 6;
+}
+
+message Patient {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string cardNumber = 4;
+  uint32 dateOfBirth = 5;
+  string address = 6;
+  string phoneNumber = 7;
+  string mobileNumber = 8;
+  string email = 9;
+  string gender = 10;
+  float weight = 11;
+  float height = 12;
+  string bloodGroup = 13;
+  string genotype = 14;
+  string allergies = 15;
+  string sickling = 16;
+  string rh = 17;
+  family.Family family = 18;
+  int32 lastViewed = 19;
+  int32 createdAt = 20;
+  int32 updatedAt = 21;
+  models.BriefUser createdBy = 22;
+  models.BriefUser updatedBy = 23;
+}
+
+message CreatePatientDTO {
+  string token = 1;
+  string firstName = 2;
+  string lastName = 3;
+  string cardNumber = 4;
+  uint32 dateOfBirth = 5;
+  string address = 6;
+  string phoneNumber = 7;
+  string mobileNumber = 8;
+  string email = 9;
+  string gender = 10;
+  float weight = 11;
+  float height = 12;
+  string bloodGroup = 13;
+  string genotype = 14;
+  string allergies = 15;
+  string sickling = 16;
+  string rh = 17;
+  family.Family family = 18;
+}
+
+message UpdatePatientDTO {
+  string id = 1;
+  string firstName = 2;
+  string lastName = 3;
+  family.Family family = 4;
+  uint32 dateOfBirth = 5;
+  string address = 6;
+  string phoneNumber = 7;
+  string mobileNumber = 8;
+  string email = 9;
+  string gender = 10;
+  float weight = 11;
+  float height = 12;
+  string bloodGroup = 13;
+  string genotype = 14;
+  string allergies = 15;
+  string sickling = 16;
+  string rh = 17;
+  string token = 18;
+}
+
+message DeletePatientDTO {
+  string id = 1;
+  string token = 2;
+}
+
+message ViewPatientDTO {
+  string id = 1;
+  string token = 2;
+}
+
+message ListPatientsDTO {
+  string token = 1;
+  string createdBy = 2;
+  string updatedBy = 3;
+  string name = 4;
+  string familyName = 5;
+  string cardNumber = 6;
+  string phone = 7;
+  string email = 8;
+  uint32 page = 9;
+  uint32 perPage = 10;
+}
+
+message PatientResponse {
+  uint32 status = 1;
+  Patient data = 2;
+  repeated string errors = 3;
+}
+
+message PatientsResponse {
+  uint32 status = 1;
+  repeated PatientBasic data = 2;
+  models.Pagination pagination = 3;
+  repeated string errors = 4;
+}
+
+message DeletePatientResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}

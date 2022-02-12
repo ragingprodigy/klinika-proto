@@ -4,6 +4,8 @@ package klinika;
 
 import "auth/auth.proto";
 import "labTest/labTest.proto";
+import "patient/patient.proto";
+import "family/family.proto";
 import "models/models.proto";
 import "room/room.proto";
 import "system/system.proto";
@@ -29,4 +31,16 @@ service Klinika {
   rpc CreateLabTest(labTest.CreateLabTestDTO) returns (labTest.LabTestResponse);
   rpc UpdateLabTest(labTest.UpdateLabTestDTO) returns (labTest.LabTestResponse);
   rpc DeleteLabTest(labTest.DeleteLabTestDTO) returns (labTest.DeleteLabTestResponse);
+
+  rpc ListFamilyies(family.ListFamiliesDTO) returns (family.FamiliesResponse);
+  rpc ViewFamily(family.ViewFamilyDTO) returns (family.FamilyResponse);
+  rpc CreateFamily(family.CreateFamilyDTO) returns (family.FamilyResponse);
+  rpc UpdateFamily(family.UpdateFamilyDTO) returns (family.FamilyResponse);
+  rpc DeleteFamily(family.DeleteFamilyDTO) returns (family.DeleteFamilyResponse);
+
+  rpc ListPatients(patient.ListPatientsDTO) returns (patient.PatientsResponse);
+  rpc ViewPatient(patient.ViewPatientDTO) returns (patient.PatientResponse);
+  rpc CreatePatient(patient.CreatePatientDTO) returns (patient.PatientResponse);
+  rpc UpdatePatient(patient.UpdatePatientDTO) returns (patient.PatientResponse);
+  rpc DeletePatient(patient.DeletePatientDTO) returns (patient.DeletePatientResponse);
 }
