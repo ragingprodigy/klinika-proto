@@ -1,0 +1,133 @@
+syntax = "proto3";
+
+package drug;
+
+import "models/models.proto";
+
+message DrugType {
+  string id = 1;
+  string name = 2;
+  int32 createdAt = 3;
+  int32 updatedAt = 4;
+  models.BriefUser createdBy = 5;
+  models.BriefUser updatedBy = 6;
+}
+
+message DrugBasic {
+  message Type {
+    string id = 1;
+    string name = 2;
+  }
+
+  string id = 1;
+  string name = 2;
+  Type type = 3;
+  bool isInjection = 4;
+}
+
+message Drug {
+  string id = 1;
+  string name = 2;
+  DrugType type = 3;
+  bool isInjection = 4;
+  uint32 startingStock = 5;
+  uint32 inStock = 6;
+  int32 createdAt = 7;
+  int32 updatedAt = 8;
+  models.BriefUser createdBy = 9;
+  models.BriefUser updatedBy = 10;
+}
+
+message CreateDrugDTO {
+  string token = 1;
+  string name = 2;
+  string type = 3;
+  bool isInjection = 4;
+  uint32 startingStock = 5;
+  uint32 inStock = 6;
+}
+
+message CreateDrugTypeDTO {
+  string token = 1;
+  string name = 2;
+}
+
+message UpdateDrugDTO {
+  string id = 1;
+  string name = 2;
+  string type = 3;
+  bool isInjection = 4;
+  uint32 startingStock = 5;
+  uint32 inStock = 6;
+  string token = 7;
+}
+
+message UpdateDrugTypeDTO {
+  string token = 1;
+  string id = 2;
+  string name = 3;
+}
+
+message DeleteDrugDTO {
+  string id = 1;
+  string token = 4;
+}
+
+message DeleteDrugTypeDTO {
+  string id = 1;
+  string token = 4;
+}
+
+message ListDrugsDTO {
+  bool showAll = 1;
+  string createdBy = 2;
+  string updatedBy = 3;
+  string name = 4;
+  string type = 5;
+  uint32 startingStock = 6;
+  models.NumberOp startingStockOp = 7;
+  uint32 inStock = 8;
+  models.NumberOp inStockOp = 9;
+  uint32 page = 10;
+  uint32 perPage = 11;
+  string token = 12;
+}
+
+message ListDrugTypesDTO {
+  string token = 1;
+}
+
+message DrugResponse {
+  uint32 status = 1;
+  Drug data = 2;
+  repeated string errors = 3;
+}
+
+message DrugTypeResponse {
+  uint32 status = 1;
+  DrugType data = 2;
+  repeated string errors = 3;
+}
+
+message DrugsResponse {
+  uint32 status = 1;
+  repeated DrugBasic data = 2;
+  models.Pagination pagination = 3;
+  repeated string errors = 4;
+}
+
+message DrugTypesResponse {
+  uint32 status = 1;
+  repeated DrugType data = 2;
+  repeated string errors = 3;
+}
+
+message DeleteDrugResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}
+
+message DeleteDrugTypeResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}

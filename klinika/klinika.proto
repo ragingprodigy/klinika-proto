@@ -3,6 +3,7 @@ syntax = "proto3";
 package klinika;
 
 import "auth/auth.proto";
+import "drug/drug.proto";
 import "labTest/labTest.proto";
 import "patient/patient.proto";
 import "family/family.proto";
@@ -15,6 +16,7 @@ service Klinika {
   rpc SetupComplete(system.SetupDTO) returns (system.SetupResponse);
   rpc PerformSetup(system.PerformSetupDTO) returns (auth.LoginResponse);
 
+  // Authentication
   rpc Login(auth.LoginDTO) returns (auth.LoginResponse);
   rpc CheckToken(models.TokenDTO) returns (auth.TokenResponse);
   rpc Register(auth.RegistrationDTO) returns (auth.LoginResponse);
@@ -22,22 +24,38 @@ service Klinika {
   rpc VerifyPhoneNumber(auth.VerificationDTO) returns (auth.LoginResponse);
   rpc GetProfile(models.TokenDTO) returns (user.ProfileResponse);
 
+  // Romm Management
   rpc ListRooms(room.ListRoomsDTO) returns (room.RoomsResponse);
   rpc CreateRoom(room.CreateRoomDTO) returns (room.RoomResponse);
   rpc UpdateRoom(room.UpdateRoomDTO) returns (room.RoomResponse);
   rpc DeleteRoom(room.DeleteRoomDTO) returns (room.DeleteRoomResponse);
 
+  // Drug Management
+  rpc ListDrugs(drug.ListDrugsDTO) returns (drug.DrugsResponse);
+  rpc CreateDrug(drug.CreateDrugDTO) returns (drug.DrugResponse);
+  rpc UpdateDrug(drug.UpdateDrugDTO) returns (drug.DrugResponse);
+  rpc DeleteDrug(drug.DeleteDrugDTO) returns (drug.DeleteDrugResponse);
+
+  // DrugType Management
+  rpc ListDrugTypes(drug.ListDrugTypesDTO) returns (drug.DrugTypesResponse);
+  rpc CreateDrugType(drug.CreateDrugTypeDTO) returns (drug.DrugTypeResponse);
+  rpc UpdateDrugType(drug.UpdateDrugTypeDTO) returns (drug.DrugTypeResponse);
+  rpc DeleteDrugType(drug.DeleteDrugTypeDTO) returns (drug.DeleteDrugTypeResponse);
+
+  // LabTest Management
   rpc ListLabTests(labTest.ListLabTestsDTO) returns (labTest.LabTestsResponse);
   rpc CreateLabTest(labTest.CreateLabTestDTO) returns (labTest.LabTestResponse);
   rpc UpdateLabTest(labTest.UpdateLabTestDTO) returns (labTest.LabTestResponse);
   rpc DeleteLabTest(labTest.DeleteLabTestDTO) returns (labTest.DeleteLabTestResponse);
 
+  // Family Management
   rpc ListFamilyies(family.ListFamiliesDTO) returns (family.FamiliesResponse);
   rpc ViewFamily(family.ViewFamilyDTO) returns (family.FamilyResponse);
   rpc CreateFamily(family.CreateFamilyDTO) returns (family.FamilyResponse);
   rpc UpdateFamily(family.UpdateFamilyDTO) returns (family.FamilyResponse);
   rpc DeleteFamily(family.DeleteFamilyDTO) returns (family.DeleteFamilyResponse);
 
+  // Patient Management
   rpc ListPatients(patient.ListPatientsDTO) returns (patient.PatientsResponse);
   rpc ViewPatient(patient.ViewPatientDTO) returns (patient.PatientResponse);
   rpc CreatePatient(patient.CreatePatientDTO) returns (patient.PatientResponse);

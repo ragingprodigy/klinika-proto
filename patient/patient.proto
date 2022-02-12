@@ -58,7 +58,7 @@ message CreatePatientDTO {
   string allergies = 15;
   string sickling = 16;
   string rh = 17;
-  family.Family family = 18;
+  string family = 18;
 }
 
 message UpdatePatientDTO {
