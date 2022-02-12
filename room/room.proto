@@ -17,16 +17,19 @@ message Room {
 message CreateRoomDTO {
   string name = 1;
   uint32 beds = 2;
+  string token = 3;
 }
 
 message UpdateRoomDTO {
   string id = 1;
   string name = 2;
   uint32 beds = 3;
+  string token = 4;
 }
 
 message DeleteRoomDTO {
   string id = 1;
+  string token = 4;
 }
 
 message ListRoomsDTO {
@@ -35,7 +38,10 @@ message ListRoomsDTO {
   string updatedBy = 3;
   string name = 4;
   uint32 beds = 5;
-  models.NumberOp bedsOp = 6; 
+  models.NumberOp bedsOp = 6;
+  uint32 page = 7;
+  uint32 perPage = 8;
+  string token = 9;
 }
 
 message RoomResponse {

@@ -3,6 +3,7 @@ syntax = "proto3";
 package klinika;
 
 import "auth/auth.proto";
+import "labTest/labTest.proto";
 import "models/models.proto";
 import "room/room.proto";
 import "system/system.proto";
@@ -23,4 +24,9 @@ service Klinika {
   rpc CreateRoom(room.CreateRoomDTO) returns (room.RoomResponse);
   rpc UpdateRoom(room.UpdateRoomDTO) returns (room.RoomResponse);
   rpc DeleteRoom(room.DeleteRoomDTO) returns (room.DeleteRoomResponse);
+
+  rpc ListLabTests(labTest.ListLabTestsDTO) returns (labTest.LabTestsResponse);
+  rpc CreateLabTest(labTest.CreateLabTestDTO) returns (labTest.LabTestResponse);
+  rpc UpdateLabTest(labTest.UpdateLabTestDTO) returns (labTest.LabTestResponse);
+  rpc DeleteLabTest(labTest.DeleteLabTestDTO) returns (labTest.DeleteLabTestResponse);
 }

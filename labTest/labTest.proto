@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+package labTest;
+
+import "models/models.proto";
+
+message Metric {
+  string name = 1;
+  string normal = 2;
+}
+
+message LabTest {
+  string id = 1;
+  string name = 2;
+  float cost = 3;
+  repeated Metric metrics = 4;
+  int32 createdAt = 5;
+  int32 updatedAt = 6;
+  models.BriefUser createdBy = 7;
+  models.BriefUser updatedBy = 8;
+}
+
+message CreateLabTestDTO {
+  string name = 1;
+  float cost = 2;
+  repeated Metric metrics = 3;
+  string token = 4;
+}
+
+message UpdateLabTestDTO {
+  string id = 1;
+  string name = 2;
+  float cost = 3;
+  repeated Metric metrics = 4;
+  string token = 5;
+}
+
+message DeleteLabTestDTO {
+  string id = 1;
+  string token = 2;
+}
+
+message ListLabTestsDTO {
+  bool showAll = 1;
+  string createdBy = 2;
+  string updatedBy = 3;
+  string name = 4;
+  float cost = 5;
+  models.NumberOp costOp = 6;
+  string metricName = 7;
+  uint32 page = 8;
+  uint32 perPage = 9;
+  string token = 10;
+}
+
+message LabTestResponse {
+  uint32 status = 1;
+  LabTest data = 2;
+  repeated string errors = 3;
+}
+
+message LabTestsResponse {
+  uint32 status = 1;
+  repeated LabTest data = 2;
+  models.Pagination pagination = 3;
+  repeated string errors = 4;
+}
+
+message DeleteLabTestResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}
