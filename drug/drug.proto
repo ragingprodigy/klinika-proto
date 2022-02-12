@@ -25,6 +25,13 @@ message DrugBasic {
   bool isInjection = 4;
 }
 
+message Inventory {
+  uint32 delta = 1;
+  string comments = 2;
+  int32 createdAt = 3;
+  models.BriefUser createdBy = 5;
+}
+
 message Drug {
   string id = 1;
   string name = 2;
@@ -32,10 +39,11 @@ message Drug {
   bool isInjection = 4;
   uint32 startingStock = 5;
   uint32 inStock = 6;
-  int32 createdAt = 7;
-  int32 updatedAt = 8;
-  models.BriefUser createdBy = 9;
-  models.BriefUser updatedBy = 10;
+  repeated Inventory inventoryChanges = 7;
+  int32 createdAt = 8;
+  int32 updatedAt = 9;
+  models.BriefUser createdBy = 10;
+  models.BriefUser updatedBy = 11;
 }
 
 message CreateDrugDTO {
