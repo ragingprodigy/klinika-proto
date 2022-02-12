@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package investigation;
+
+import "models/models.proto";
+import "patient/patient.proto";
+import "labTest/labTest.proto";
+
+message TestResult {
+  string name = 1;
+  string normal = 2;
+  string result = 3;
+}
+
+message InvestigationBasic {
+  string id = 1;
+  patient.PatientBasic patient = 2;
+  labTest.LabTestBasic labTest = 3;
+  models.BriefUser requestedBy = 4;
+  bool submitted = 5;
+  bool completed = 6;
+}
+
+message Investigation {
+  string id = 1;
+  patient.PatientBasic patient = 2;
+  labTest.LabTestBasic labTest = 3;
+  repeated TestResult results = 4;
+  bool submitted = 5;
+  bool completed = 6;
+  int32 createdAt = 7;
+  int32 updatedAt = 8;
+  models.BriefUser requestedBy = 9;
+  models.BriefUser createdBy = 10;
+  models.BriefUser updatedBy = 11;
+}
+
+message CreateInvestigationDTO {
+  string patient = 1;
+  string labTest = 2;
+  bool submitted = 3;
+  string token = 4;
+}
+
+message UpdateInvestigationDTO {
+  string id = 1;
+  repeated TestResult results = 2;
+  bool completed = 3;
+  string token = 4;
+}
+
+message DeleteInvestigationDTO {
+  string id = 1;
+  string token = 4;
+}
+
+message ViewInvestigationDTO {
+  string id = 1;
+  string token = 4;
+}
+
+message ListInvestigationsDTO {
+  string token = 1;
+  string createdBy = 2;
+  string updatedBy = 3;
+  string patient = 4;
+  string labTest = 5;
+  string requestedBy = 6;
+  bool submitted = 7;
+  bool completed = 8;
+  uint32 page = 9;
+  uint32 perPage = 10;
+}
+
+message InvestigationResponse {
+  uint32 status = 1;
+  Investigation data = 2;
+  repeated string errors = 3;
+}
+
+message InvestigationsResponse {
+  uint32 status = 1;
+  repeated InvestigationBasic data = 2;
+  models.Pagination pagination = 3;
+  repeated string errors = 4;
+}
+
+message DeleteInvestigationResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}

@@ -11,6 +11,7 @@ import "models/models.proto";
 import "room/room.proto";
 import "system/system.proto";
 import "user/user.proto";
+import "investigation/investigation.proto";
 
 service Klinika {
   rpc SetupComplete(system.SetupDTO) returns (system.SetupResponse);
@@ -61,4 +62,11 @@ service Klinika {
   rpc CreatePatient(patient.CreatePatientDTO) returns (patient.PatientResponse);
   rpc UpdatePatient(patient.UpdatePatientDTO) returns (patient.PatientResponse);
   rpc DeletePatient(patient.DeletePatientDTO) returns (patient.DeletePatientResponse);
+
+  // Investigation Management
+  rpc ListInvestigations(investigation.ListInvestigationsDTO) returns (investigation.InvestigationsResponse);
+  rpc ViewInvestigation(investigation.ViewInvestigationDTO) returns (investigation.InvestigationResponse);
+  rpc CreateInvestigation(investigation.CreateInvestigationDTO) returns (investigation.InvestigationResponse);
+  rpc UpdateInvestigation(investigation.UpdateInvestigationDTO) returns (investigation.InvestigationResponse);
+  rpc DeleteInvestigation(investigation.DeleteInvestigationDTO) returns (investigation.DeleteInvestigationResponse);
 }

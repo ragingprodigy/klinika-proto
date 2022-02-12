@@ -9,6 +9,12 @@ message Metric {
   string normal = 2;
 }
 
+message LabTestBasic {
+  string id = 1;
+  string name = 2;
+  float cost = 3;
+}
+
 message LabTest {
   string id = 1;
   string name = 2;
@@ -61,7 +67,7 @@ message LabTestResponse {
 
 message LabTestsResponse {
   uint32 status = 1;
-  repeated LabTest data = 2;
+  repeated LabTestBasic data = 2;
   models.Pagination pagination = 3;
   repeated string errors = 4;
 }
