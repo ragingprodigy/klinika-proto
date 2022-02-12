@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package room;
+
+import "models/models.proto";
+
+message Room {
+  string id = 1;
+  string name = 2;
+  uint32 beds = 3;
+  int32 createdAt = 4;
+  int32 updatedAt = 5;
+  models.BriefUser createdBy = 6;
+  models.BriefUser updatedBy = 7;
+}
+
+message CreateRoomDTO {
+  string name = 1;
+  uint32 beds = 2;
+}
+
+message UpdateRoomDTO {
+  string id = 1;
+  string name = 2;
+  uint32 beds = 3;
+}
+
+message DeleteRoomDTO {
+  string id = 1;
+}
+
+message ListRoomsDTO {
+  bool showAll = 1;
+  string createdBy = 2;
+  string updatedBy = 3;
+  string name = 4;
+  uint32 beds = 5;
+  models.NumberOp bedsOp = 6; 
+}
+
+message RoomResponse {
+  uint32 status = 1;
+  Room data = 2;
+  repeated string errors = 3;
+}
+
+message RoomsResponse {
+  uint32 status = 1;
+  repeated Room data = 2;
+  models.Pagination pagination = 3;
+  repeated string errors = 4;
+}
+
+message DeleteRoomResponse {
+  uint32 status = 1;
+  repeated string errors = 2;
+}

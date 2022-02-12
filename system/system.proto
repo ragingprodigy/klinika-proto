@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package system;
+
+import "auth/auth.proto";
+
+message SetupDTO {}
+
+message SetupResponse {
+  message Data {
+    bool hospitalRegistered = 1;
+    bool userCreated = 2;
+  }
+  uint32 status = 1;
+  Data data = 2;
+}
+
+message PerformSetupDTO {
+  auth.RegistrationDTO user = 1;
+  string hospitalName = 2;
+}

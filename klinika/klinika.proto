@@ -2,15 +2,25 @@ syntax = "proto3";
 
 package klinika;
 
-import "models/models.proto";
-import "user/user.proto";
 import "auth/auth.proto";
+import "models/models.proto";
+import "room/room.proto";
+import "system/system.proto";
+import "user/user.proto";
 
 service Klinika {
+  rpc SetupComplete(system.SetupDTO) returns (system.SetupResponse);
+  rpc PerformSetup(system.PerformSetupDTO) returns (auth.LoginResponse);
+
   rpc Login(auth.LoginDTO) returns (auth.LoginResponse);
   rpc CheckToken(models.TokenDTO) returns (auth.TokenResponse);
   rpc Register(auth.RegistrationDTO) returns (auth.LoginResponse);
   rpc VerifyEmailAddress(auth.VerificationDTO) returns (auth.LoginResponse);
   rpc VerifyPhoneNumber(auth.VerificationDTO) returns (auth.LoginResponse);
   rpc GetProfile(models.TokenDTO) returns (user.ProfileResponse);
+
+  rpc ListRooms(room.ListRoomsDTO) returns (room.RoomsResponse);
+  rpc CreateRoom(room.CreateRoomDTO) returns (room.RoomResponse);
+  rpc UpdateRoom(room.UpdateRoomDTO) returns (room.RoomResponse);
+  rpc DeleteRoom(room.DeleteRoomDTO) returns (room.DeleteRoomResponse);
 }
