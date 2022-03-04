@@ -16,6 +16,12 @@ message Family {
   models.BriefUser updatedBy = 9;
 }
 
+message FamilyBasic {
+  string id = 1;
+  string name = 2;
+  string cardNumber = 3;
+}
+
 message CreateFamilyDTO {
   string token = 1;
   string name = 2;
@@ -43,6 +49,11 @@ message ViewFamilyDTO {
   string token = 2;
 }
 
+message SearchFamiliesDTO {
+  string token = 1;
+  string term = 2;
+}
+
 message ListFamiliesDTO {
   string token = 1;
   string createdBy = 2;
@@ -66,6 +77,12 @@ message FamiliesResponse {
   repeated Family data = 2;
   models.Pagination pagination = 3;
   repeated string errors = 4;
+}
+
+message SearchFamiliesResponse {
+  uint32 status = 1;
+  repeated FamilyBasic data = 2;
+  repeated string errors = 3;
 }
 
 message DeleteFamilyResponse {
