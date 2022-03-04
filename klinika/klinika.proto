@@ -51,7 +51,7 @@ service Klinika {
   rpc DeleteLabTest(labTest.DeleteLabTestDTO) returns (labTest.DeleteLabTestResponse);
 
   // Family Management
-  rpc ListFamilyies(family.ListFamiliesDTO) returns (family.FamiliesResponse);
+  rpc ListFamilies(family.ListFamiliesDTO) returns (family.FamiliesResponse);
   rpc ViewFamily(family.ViewFamilyDTO) returns (family.FamilyResponse);
   rpc CreateFamily(family.CreateFamilyDTO) returns (family.FamilyResponse);
   rpc UpdateFamily(family.UpdateFamilyDTO) returns (family.FamilyResponse);
