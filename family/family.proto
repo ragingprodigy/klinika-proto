@@ -4,14 +4,6 @@ package family;
 
 import "models/models.proto";
 
-message FamilyBasic {
-  string id = 1;
-  string name = 2;
-  string cardNumber = 3;
-  string address = 4;
-  string phoneNumber = 5;
-}
-
 message Family {
   string id = 1;
   string name = 2;
@@ -71,7 +63,7 @@ message FamilyResponse {
 
 message FamiliesResponse {
   uint32 status = 1;
-  repeated FamilyBasic data = 2;
+  repeated Family data = 2;
   models.Pagination pagination = 3;
   repeated string errors = 4;
 }
