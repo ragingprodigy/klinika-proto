@@ -41,6 +41,11 @@ message UpdateLabTestDTO {
   string token = 5;
 }
 
+message ViewLabTestDTO {
+  string id = 1;
+  string token = 2;
+}
+
 message DeleteLabTestDTO {
   string id = 1;
   string token = 2;

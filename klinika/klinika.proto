@@ -45,6 +45,7 @@ service Klinika {
 
   // LabTest Management
   rpc ListLabTests(labTest.ListLabTestsDTO) returns (labTest.LabTestsResponse);
+  rpc ViewLabTest(labTest.ViewLabTestDTO) returns (labTest.LabTestResponse);
   rpc CreateLabTest(labTest.CreateLabTestDTO) returns (labTest.LabTestResponse);
   rpc UpdateLabTest(labTest.UpdateLabTestDTO) returns (labTest.LabTestResponse);
   rpc DeleteLabTest(labTest.DeleteLabTestDTO) returns (labTest.DeleteLabTestResponse);
