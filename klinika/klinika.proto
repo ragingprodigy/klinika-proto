@@ -20,6 +20,7 @@ service Klinika {
   // Authentication
   rpc Login(auth.LoginDTO) returns (auth.LoginResponse);
   rpc CheckToken(models.TokenDTO) returns (auth.TokenResponse);
+  rpc RenewToken(models.TokenDTO) returns (auth.LoginResponse);
   rpc Register(auth.RegistrationDTO) returns (auth.LoginResponse);
   rpc VerifyEmailAddress(auth.VerificationDTO) returns (auth.LoginResponse);
   rpc VerifyPhoneNumber(auth.VerificationDTO) returns (auth.LoginResponse);
